@@ -200,6 +200,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         recipientPhone: recipientPhone,
                         message_id,
                         listOfButtons: categories.data
+                            .slice(0, 3)
                             .map((category) => ({
                                 title: category,
                                 id: `category_${category}`,
