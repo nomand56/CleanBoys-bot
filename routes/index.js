@@ -4,7 +4,8 @@ const router = require('express').Router();
 const WhatsappCloudAPI = require('whatsappcloudapi_wrapper');
 
 const Whatsapp = new WhatsappCloudAPI({
-    accessToken: 'EABLtwfrbyC0BAFaZBShmXCgIbhqtYWOUTNyZAP9Xf8Usu3SGTgSgltCU6McJ4pLFCuhnob3Ahp7fO2jsI0qIM3GBh8yOWeZANhWQOHgKr2V6EolOsn6i34yABpsZAah5QNJXS6PxC6HJPZAvEuQUYuU7QeyOyWZCUd4QklWVTUc9itNWa2q6JtRn7m7VOwglxIUPwphZB98cQZDZD',
+    accessToken:
+        'EABLtwfrbyC0BAFaZBShmXCgIbhqtYWOUTNyZAP9Xf8Usu3SGTgSgltCU6McJ4pLFCuhnob3Ahp7fO2jsI0qIM3GBh8yOWeZANhWQOHgKr2V6EolOsn6i34yABpsZAah5QNJXS6PxC6HJPZAvEuQUYuU7QeyOyWZCUd4QklWVTUc9itNWa2q6JtRn7m7VOwglxIUPwphZB98cQZDZD',
     senderPhoneNumberId: '105055832516532',
     WABA_ID: '115541034788584',
 });
@@ -184,7 +185,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                             phones: [
                                 {
                                     phone: '+91 1111 222 3333',
-                                }
+                                },
                             ],
                         },
                     });
@@ -242,7 +243,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     await Whatsapp.sendRadioButtons({
                         recipientPhone: recipientPhone,
-                        headerText: `Hi ${recipientName},`,
+                        headerText: '\b',
                         bodyText: `Selected Category: ${selectedCategory}`,
                         footerText: 'Please select one of the products below:',
                         listOfSections,
