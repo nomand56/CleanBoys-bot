@@ -85,11 +85,11 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                     recipientPhone: recipientPhone,
                     listOfButtons: [
                         {
-                            title: 'View some products',
+                            title: 'View Some Products',
                             id: 'see_categories',
                         },
                         {
-                            title: 'Speak to a human',
+                            title: 'Speak to an Agent',
                             id: 'speak_to_human',
                         },
                     ],
@@ -162,7 +162,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                     // respond with a list of human resources
                     await Whatsapp.sendText({
                         recipientPhone: recipientPhone,
-                        message: `Not to brag, but unlike humans, chatbots are super fast⚡, we never sleep, never rest, never take lunch🍽 and can multitask.\n\nAnway don't fret, a hoooooman will 📞contact you soon.\n\nWanna blast☎ his/her phone😈?\nHere are the contact details:`,
+                        message: `Here are the contact details:`,
                     });
 
                     await Whatsapp.sendContact({
@@ -170,24 +170,21 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         contact_profile: {
                             addresses: [
                                 {
-                                    city: 'Nairobi',
-                                    country: 'Kenya',
+                                    city: 'New Delhi',
+                                    country: 'India',
                                 },
                             ],
                             name: {
-                                first_name: 'Daggie',
-                                last_name: 'Blanqx',
+                                first_name: 'Aanya',
+                                last_name: 'Sharma',
                             },
                             org: {
-                                company: 'Mom-N-Pop Shop',
+                                company: 'Car Service',
                             },
                             phones: [
                                 {
-                                    phone: '+1 (555) 025-3483',
-                                },
-                                {
-                                    phone: '+254 712345678',
-                                },
+                                    phone: '+91 1111 222 3333',
+                                }
                             ],
                         },
                     });
@@ -245,9 +242,9 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     await Whatsapp.sendRadioButtons({
                         recipientPhone: recipientPhone,
-                        headerText: `#BlackFriday Offers: ${selectedCategory}`,
-                        bodyText: `Our Santa 🎅🏿 has lined up some great products for you based on your previous shopping history.\n\nPlease select one of the products below:`,
-                        footerText: 'Powered by: BMI LLC',
+                        headerText: `Offers: ${selectedCategory}`,
+                        bodyText: `Please select one of the products below:`,
+                        footerText: 'Powered by: Car Service',
                         listOfSections,
                     });
                 }
@@ -265,11 +262,11 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         message_id,
                         listOfButtons: [
                             {
-                                title: 'Checkout 🛍️',
+                                title: 'Checkout',
                                 id: `checkout`,
                             },
                             {
-                                title: 'See more products',
+                                title: 'See More Products',
                                 id: 'see_categories',
                             },
                         ],
@@ -303,11 +300,11 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         message_id,
                         listOfButtons: [
                             {
-                                title: 'See more products',
+                                title: 'See More Products',
                                 id: 'see_categories',
                             },
                             {
-                                title: 'Print my invoice',
+                                title: 'Print My Invoice',
                                 id: 'print_invoice',
                             },
                         ],
@@ -320,7 +317,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                     // Send the PDF invoice
                     await Whatsapp.sendDocument({
                         recipientPhone,
-                        caption: `Mom-N-Pop Shop invoice #${recipientName}`,
+                        caption: `Car Service invoice #${recipientName}`,
                         file_path: `./invoice_${recipientName}.pdf`,
                     });
 
@@ -337,7 +334,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         latitude: warehouse.latitude,
                         longitude: warehouse.longitude,
                         address: warehouse.address,
-                        name: 'Mom-N-Pop Shop',
+                        name: 'Car Service',
                     });
                 }
             }
