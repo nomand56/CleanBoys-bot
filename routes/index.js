@@ -183,7 +183,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                             },
                             phones: [
                                 {
-                                    phone: '+9111112223333',
+                                    phone: '+91 1111 222 3333',
                                 }
                             ],
                         },
@@ -242,9 +242,9 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     await Whatsapp.sendRadioButtons({
                         recipientPhone: recipientPhone,
-                        headerText: `Selected Category: ${selectedCategory}`,
-                        bodyText: `Please select one of the products below:`,
-                        footerText: '',
+                        headerText: `Hi ${recipientName},`,
+                        bodyText: `Selected Category: ${selectedCategory}`,
+                        footerText: 'Please select one of the products below:',
                         listOfSections,
                     });
                 }
