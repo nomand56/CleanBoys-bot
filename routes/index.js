@@ -89,7 +89,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                             id: 'see_categories',
                         },
                         {
-                            title: 'Speak to an Agent',
+                            title: 'Speak to Human',
                             id: 'speak_to_human',
                         },
                     ],
@@ -139,11 +139,11 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         message_id,
                         listOfButtons: [
                             {
-                                title: 'Add to cart🛒',
+                                title: 'Add to Cart',
                                 id: `add_to_cart_${product_id}`,
                             },
                             {
-                                title: 'Speak to a human',
+                                title: 'Speak to Human',
                                 id: 'speak_to_human',
                             },
                             {
@@ -183,7 +183,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                             },
                             phones: [
                                 {
-                                    phone: '+91 1111 222 3333',
+                                    phone: '+9111112223333',
                                 }
                             ],
                         },
@@ -242,9 +242,9 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     await Whatsapp.sendRadioButtons({
                         recipientPhone: recipientPhone,
-                        headerText: `Offers: ${selectedCategory}`,
+                        headerText: `Selected Category: ${selectedCategory}`,
                         bodyText: `Please select one of the products below:`,
-                        footerText: 'Powered by: Car Service',
+                        // footerText: 'Powered by: Car Service',
                         listOfSections,
                     });
                 }
