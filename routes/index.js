@@ -213,7 +213,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     let listOfSections = [
                         {
-                            title: `🏆 Top 3: ${selectedCategory}`.substring(
+                            title: `Category: ${selectedCategory}`.substring(
                                 0,
                                 24
                             ),
