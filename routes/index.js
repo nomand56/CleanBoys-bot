@@ -109,24 +109,12 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         description,
                         category,
                         image: imageUrl,
-                        rating,
                     } = product.data;
-
-                    let emojiRating = (rvalue) => {
-                        rvalue = Math.floor(rvalue || 0); // generate as many star emojis as whole ratings
-                        let output = [];
-                        for (var i = 0; i < rvalue; i++) output.push('⭐');
-                        return output.length ? output.join('') : 'N/A';
-                    };
 
                     let text = `_Title_: *${title.trim()}*\n\n\n`;
                     text += `_Description_: ${description.trim()}\n\n\n`;
                     text += `_Price_: $${price}\n`;
                     text += `_Category_: ${category}\n`;
-                    text += `${
-                        rating?.count || 0
-                    } shoppers liked this product.\n`;
-                    text += `_Rated_: ${emojiRating(rating?.rate)}\n`;
 
                     await Whatsapp.sendImage({
                         recipientPhone,

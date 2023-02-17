@@ -2,6 +2,7 @@
 const request = require('request');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
+const { connectDB, dbclient } = require("./connect");
 
 module.exports = class EcommerceStore {
     constructor() {}
@@ -28,15 +29,25 @@ module.exports = class EcommerceStore {
     }
 
     async getProductById(productId) {
-        return await this._fetchAssistant(`/products/${productId}`);
+        let db = await connectDB();
+        let productById = await db
+            .collection('products')
+            .find({ id: `${productId}` }, { projection: { _id: 0 } })
+            .toArray();
+        await dbclient.close();
+        return productById[0];
     }
     async getAllCategories() {
-        return await this._fetchAssistant('/products/categories?limit=100');
+        return ['Category 1', 'Category 2', 'Category 3'];
     }
     async getProductsInCategory(categoryId) {
-        return await this._fetchAssistant(
-            `/products/category/${categoryId}?limit=10`
-        );
+        let db = await connectDB();
+        let productsInCategory = await db
+            .collection('products')
+            .find({ category: `${categoryId}` }, { projection: { _id: 0 } })
+            .toArray();
+        await dbclient.close();
+        return productsInCategory;
     }
 
     generatePDFInvoice({ order_details, file_path }) {
