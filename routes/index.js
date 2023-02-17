@@ -5,7 +5,7 @@ const WhatsappCloudAPI = require('whatsappcloudapi_wrapper');
 
 const Whatsapp = new WhatsappCloudAPI({
     accessToken:
-        'EABLtwfrbyC0BAFaZBShmXCgIbhqtYWOUTNyZAP9Xf8Usu3SGTgSgltCU6McJ4pLFCuhnob3Ahp7fO2jsI0qIM3GBh8yOWeZANhWQOHgKr2V6EolOsn6i34yABpsZAah5QNJXS6PxC6HJPZAvEuQUYuU7QeyOyWZCUd4QklWVTUc9itNWa2q6JtRn7m7VOwglxIUPwphZB98cQZDZD',
+        'EABLtwfrbyC0BAKdPy4ySxZBSjRFAIuzDJh202XZCNEx9j9iJsi9FZBqrKQeyxyzDUu6gJ5hMpNCCvD4nHItPFwOTkLIU42dt5mfzoWfKIw9nGlT6QM6uQZC3wCCPOBJZCdyuO5oZCSwB16TZAsoW216LZCS3ir2d6UJx6kY6wd4zl7owlIQrO5bMFBItBilUmu2RH2noOGKvdgZDZD',
     senderPhoneNumberId: '105055832516532',
     WABA_ID: '115541034788584',
 });
