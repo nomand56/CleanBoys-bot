@@ -244,7 +244,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         recipientPhone: recipientPhone,
                         headerText: `Selected Category: ${selectedCategory}`,
                         bodyText: `Please select one of the products below:`,
-                        // footerText: 'Powered by: Car Service',
+                        footerText: '',
                         listOfSections,
                     });
                 }
