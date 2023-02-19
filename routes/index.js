@@ -206,7 +206,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                                 0,
                                 24
                             ),
-                            rows: listOfProducts.data
+                            rows: listOfProducts
                                 .map((product) => {
                                     let id = `product_${product.id}`.substring(
                                         0,
