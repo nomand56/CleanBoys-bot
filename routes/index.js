@@ -102,6 +102,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                 if (selectionId.startsWith('product_')) {
                     let product_id = selectionId.split('_')[1];
+                    console.log(product_id);
                     let product = await Store.getProductById(product_id);
                     const {
                         price,
