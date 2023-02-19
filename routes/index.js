@@ -112,7 +112,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                     } = product;
 
                     let text = 'Product: ' + title.trim();
-                    text += '\nPrice: ₹)' + price;
+                    text += '\nPrice: ₹' + price;
                     text += '\nDescription: ' + description.trim();
 
                     await Whatsapp.sendImage({
