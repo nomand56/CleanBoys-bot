@@ -59,7 +59,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
             let addToCart = async ({ product_id, recipientPhone }) => {
                 let product = await Store.getProductById(product_id);
-                    CustomerSession.get(recipientPhone).cart.push(product);
+                CustomerSession.get(recipientPhone).cart.push(product);
             };
 
             let listOfItemsInCart = ({ recipientPhone }) => {
@@ -110,7 +110,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                     } = product;
 
                     let text = 'Product: ' + title.trim();
-                    text += '\nPrice: ₹' + price;
+                    text += '\nPrice: Rs. ' + price;
                     text += '\nDescription: ' + description.trim();
 
                     await Whatsapp.sendImage({
@@ -219,7 +219,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                                     return {
                                         id,
                                         title: `${title}`,
-                                        description: `₹${description}`,
+                                        description: `Rs. ${description}`,
                                     };
                                 })
                                 .slice(0, 10),
@@ -244,7 +244,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                     }).count;
 
                     await Whatsapp.sendSimpleButtons({
-                        message: `Your cart has been updated.\nNumber of items in cart: ${numberOfItemsInCart}.\n\nWhat do you want to do next?`,
+                        message: `Your cart has been updated.\nNumber of items in cart: ${numberOfItemsInCart}\n\nWhat do you want to do next?`,
                         recipientPhone: recipientPhone,
                         message_id,
                         listOfButtons: [
@@ -262,14 +262,14 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                 if (button_id === 'checkout') {
                     let finalBill = listOfItemsInCart({ recipientPhone });
-                    let invoiceText = `List of items in your cart:\n`;
+                    let invoiceText = `List of items in your cart: `;
 
                     finalBill.products.forEach((item, index) => {
                         let serial = index + 1;
-                        invoiceText += `\n#${serial}: ${item.title} @ ₹${item.price}`;
+                        invoiceText += `\n\nSr.${serial}: ${item.title} @ Rs. ${item.price}`;
                     });
 
-                    invoiceText += `\n\nTotal: ₹${finalBill.total}`;
+                    invoiceText += `\n\nTotal: Rs. ${finalBill.total}`;
 
                     Store.generatePDFInvoice({
                         order_details: invoiceText,
@@ -304,25 +304,25 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                     // Send the PDF invoice
                     await Whatsapp.sendDocument({
                         recipientPhone,
-                        caption: `Car Service invoice #${recipientName}`,
+                        caption: `${recipientName}'s Invoice`,
                         file_path: `./invoice_${recipientName}.pdf`,
                     });
 
                     // Send the location of our pickup station to the customer, so they can come and pick their order
-                    let warehouse = Store.generateRandomGeoLocation();
+                    // let warehouse = Store.generateRandomGeoLocation();
 
                     await Whatsapp.sendText({
                         recipientPhone: recipientPhone,
-                        message: `Your order has been fulfilled. Come and pick it up, as you pay, here:`,
+                        message: `Your order has been fulfilled. Come and pick it up.`,
                     });
 
-                    await Whatsapp.sendLocation({
-                        recipientPhone,
-                        latitude: warehouse.latitude,
-                        longitude: warehouse.longitude,
-                        address: warehouse.address,
-                        name: 'Car Service',
-                    });
+                    // await Whatsapp.sendLocation({
+                    //     recipientPhone,
+                    //     latitude: warehouse.latitude,
+                    //     longitude: warehouse.longitude,
+                    //     address: warehouse.address,
+                    //     name: 'Car Service',
+                    // });
                 }
             }
 
