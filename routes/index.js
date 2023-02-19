@@ -111,10 +111,9 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         image: imageUrl,
                     } = product;
 
-                    let text = 'Category: ' + category;
-                    text += '\nProduct: ' + title.trim();
+                    let text = 'Product: ' + title.trim();
+                    text += '\nPrice: ₹)' + price;
                     text += '\nDescription: ' + description.trim();
-                    text += '\nPrice: $' + price;
 
                     await Whatsapp.sendImage({
                         recipientPhone,
