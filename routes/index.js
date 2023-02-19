@@ -239,6 +239,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                 if (button_id.startsWith('add_to_cart_')) {
                     let product_id = button_id.split('add_to_cart_')[1];
+                    console.log(recipientPhone, product_id);
                     await addToCart({ recipientPhone, product_id });
                     let numberOfItemsInCart = listOfItemsInCart({
                         recipientPhone,
