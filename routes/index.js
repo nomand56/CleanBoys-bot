@@ -266,7 +266,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     finalBill.products.forEach((item, index) => {
                         let serial = index + 1;
-                        invoiceText += `\n\nSr.${serial}: ${item.title} @ Rs. ${item.price}`;
+                        invoiceText += `\n\nSr. ${serial}: ${item.title} @ Rs. ${item.price}`;
                     });
 
                     invoiceText += `\n\nTotal: Rs. ${finalBill.total}`;
