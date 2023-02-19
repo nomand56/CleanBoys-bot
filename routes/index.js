@@ -5,7 +5,7 @@ const WhatsappCloudAPI = require('whatsappcloudapi_wrapper');
 
 const Whatsapp = new WhatsappCloudAPI({
     accessToken:
-        'EABLtwfrbyC0BAKdPy4ySxZBSjRFAIuzDJh202XZCNEx9j9iJsi9FZBqrKQeyxyzDUu6gJ5hMpNCCvD4nHItPFwOTkLIU42dt5mfzoWfKIw9nGlT6QM6uQZC3wCCPOBJZCdyuO5oZCSwB16TZAsoW216LZCS3ir2d6UJx6kY6wd4zl7owlIQrO5bMFBItBilUmu2RH2noOGKvdgZDZD',
+        'EABLtwfrbyC0BAAfd883shoZBuNZAxjhf0pNZApxhEcBUO24f0oyVuk64uhoDrPE6v7MyMvVZACNclssAZAVXdkSqavOEO8Y8bcK3l0hZCFTdEgiLizGS8U2yUhHn0nfqIF6FrDOiEcGkmZBWSqHvyFkGQEbbmYlD0whNkcCSOSjXK7QJFCJOJB2BzxzDTeS9Ojoaw50QsJFgQZDZD',
     senderPhoneNumberId: '105055832516532',
     WABA_ID: '115541034788584',
 });
@@ -185,7 +185,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         message: `We have several categories.\nChoose one of them.`,
                         recipientPhone: recipientPhone,
                         message_id,
-                        listOfButtons: categories.data
+                        listOfButtons: categories
                             .slice(0, 3)
                             .map((category) => ({
                                 title: category,
