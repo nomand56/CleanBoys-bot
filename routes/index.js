@@ -221,7 +221,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                                     return {
                                         id,
                                         title: `${title}`,
-                                        description: `$${description}`,
+                                        description: `₹${description}`,
                                     };
                                 })
                                 .slice(0, 10),
@@ -267,10 +267,10 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     finalBill.products.forEach((item, index) => {
                         let serial = index + 1;
-                        invoiceText += `\n#${serial}: ${item.title} @ $${item.price}`;
+                        invoiceText += `\n#${serial}: ${item.title} @ ₹${item.price}`;
                     });
 
-                    invoiceText += `\n\nTotal: $${finalBill.total}`;
+                    invoiceText += `\n\nTotal: ₹${finalBill.total}`;
 
                     Store.generatePDFInvoice({
                         order_details: invoiceText,
