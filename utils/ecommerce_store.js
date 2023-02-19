@@ -2,7 +2,7 @@
 const request = require('request');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
-const { connectDB, dbclient } = require("./connect");
+const { connectDB, dbclient } = require('./connect');
 
 module.exports = class EcommerceStore {
     constructor() {}
@@ -35,6 +35,7 @@ module.exports = class EcommerceStore {
             .find({ id: `${productId}` }, { projection: { _id: 0 } })
             .toArray();
         await dbclient.close();
+        console.log(productById[0]);
         return productById[0];
     }
     async getAllCategories() {
