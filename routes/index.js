@@ -60,7 +60,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
             let addToCart = async ({ product_id, recipientPhone }) => {
                 let product = await Store.getProductById(product_id);
                 if (product.status === 'success') {
-                    CustomerSession.get(recipientPhone).cart.push(product.data);
+                    CustomerSession.get(recipientPhone).cart.push(product);
                 }
             };
 
@@ -109,7 +109,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         description,
                         category,
                         image: imageUrl,
-                    } = product.data;
+                    } = product;
 
                     let text = `_Title_: *${title.trim()}*\n\n\n`;
                     text += `_Description_: ${description.trim()}\n\n\n`;
@@ -221,8 +221,8 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                                     return {
                                         id,
-                                        title: `${title}...`,
-                                        description: `$${description}...`,
+                                        title: `${title}`,
+                                        description: `$${description}`,
                                     };
                                 })
                                 .slice(0, 10),
