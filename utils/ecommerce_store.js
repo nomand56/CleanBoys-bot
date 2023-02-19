@@ -32,7 +32,7 @@ module.exports = class EcommerceStore {
         let db = await connectDB();
         let productById = await db
             .collection('products')
-            .find({ id: productId }, { projection: { _id: 0 } })
+            .find({ id: parseInt(productId) }, { projection: { _id: 0 } })
             .toArray();
         await dbclient.close();
         console.log(productById[0],typeof productId);
