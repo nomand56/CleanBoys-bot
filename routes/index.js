@@ -59,9 +59,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
             let addToCart = async ({ product_id, recipientPhone }) => {
                 let product = await Store.getProductById(product_id);
-                if (product.status === 'success') {
                     CustomerSession.get(recipientPhone).cart.push(product);
-                }
             };
 
             let listOfItemsInCart = ({ recipientPhone }) => {
