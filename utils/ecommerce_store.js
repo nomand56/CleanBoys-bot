@@ -35,7 +35,6 @@ module.exports = class EcommerceStore {
             .find({ id: parseInt(productId) }, { projection: { _id: 0 } })
             .toArray();
         await dbclient.close();
-        console.log(productById[0],typeof productId);
         return productById[0];
     }
     async getAllCategories() {

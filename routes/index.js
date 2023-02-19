@@ -82,7 +82,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
             if (typeOfMsg === 'text_message') {
                 await Whatsapp.sendSimpleButtons({
-                    message: `Hey ${recipientName}, \nYou are speaking to a chatbot.\nWhat do you want to do next?`,
+                    message: `Hi ${recipientName}, \nYou are speaking to a chatbot.\nWhat do you want to do next?`,
                     recipientPhone: recipientPhone,
                     listOfButtons: [
                         {
@@ -102,7 +102,6 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                 if (selectionId.startsWith('product_')) {
                     let product_id = selectionId.split('_')[1];
-                    console.log(product_id);
                     let product = await Store.getProductById(product_id);
                     const {
                         price,
@@ -112,10 +111,10 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
                         image: imageUrl,
                     } = product;
 
-                    let text = `_Title_: *${title.trim()}*\n\n\n`;
-                    text += `_Description_: ${description.trim()}\n\n\n`;
-                    text += `_Price_: $${price}\n`;
-                    text += `_Category_: ${category}\n`;
+                    let text = 'Category: ' + category;
+                    text += '\nProduct: ' + title.trim();
+                    text += '\nDescription: ' + description.trim();
+                    text += '\nPrice: $' + price;
 
                     await Whatsapp.sendImage({
                         recipientPhone,
