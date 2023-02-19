@@ -228,9 +228,9 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     await Whatsapp.sendRadioButtons({
                         recipientPhone: recipientPhone,
-                        headerText: '\b',
-                        bodyText: `Selected Category: ${selectedCategory}`,
-                        footerText: 'Please select one of the products below:',
+                        headerText: `Selected Category: ${selectedCategory}`,
+                        bodyText: `Price is listed against each product.`,
+                        footerText: `Please select one of the products below:`,
                         listOfSections,
                     });
                 }
@@ -266,7 +266,7 @@ router.post('/meta_wa_callbackurl', async (req, res) => {
 
                     finalBill.products.forEach((item, index) => {
                         let serial = index + 1;
-                        invoiceText += `\n\nSr. ${serial}: ${item.title} @ Rs. ${item.price}`;
+                        invoiceText += `\n\n#${serial}: ${item.title} @ Rs. ${item.price}`;
                     });
 
                     invoiceText += `\n\nTotal: Rs. ${finalBill.total}`;
